@@ -1,0 +1,11 @@
+name: Call56WeatherMoney
+version: 1.0.0
+main: paid.weather.call56weathermoney.Call56WeatherMoney
+api-version: 1.17
+depend:
+  - Vault
+commands:
+  wea:
+    description: 100cp払うことで天気を変更できます
+    usage: /wea <args(clear / rain / reload)>
+    aliases: [w]
