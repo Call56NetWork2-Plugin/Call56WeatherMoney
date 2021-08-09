@@ -12,13 +12,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Call56WeatherMoney extends JavaPlugin implements Listener {
     public static Economy economy = null;
-    public static Call56WeatherMoney instance;
 
     @Override
     public void onEnable() {
-        Bukkit.getPluginManager().registerEvents(new Call56WeatherMoney(), this);
+        Bukkit.getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
-        instance = this;
         setupEconomy();
         getLogger().info("Enabled");
     }
@@ -41,10 +39,12 @@ public final class Call56WeatherMoney extends JavaPlugin implements Listener {
             if(args[0].equals("clear")) {
                 getEconomy().withdrawPlayer(player, price);
                 player.sendMessage("§a天気を晴れに変更しました");
+                player.getWorld().setStorm(false);
                 return true;
             } else if(args[0].equals("rain")) {
                 getEconomy().withdrawPlayer(player, price);
                 player.sendMessage("§a天気を雨に変更しました");
+                player.getWorld().setStorm(true);
                 return true;
             } else if(args[0].equals("reload")) {
                 if(player.isOp()) {
