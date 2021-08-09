@@ -47,7 +47,12 @@ public final class Call56WeatherMoney extends JavaPlugin implements Listener {
                 player.sendMessage("§a天気を雨に変更しました");
                 return true;
             } else if(args[0].equals("reload")) {
-                reloadConfig();
+                if(player.isOp()) {
+                    reloadConfig();
+                    player.sendMessage("config.ymlをリロードしました");
+                } else {
+                    player.sendMessage("reloadは権限者のみができます");
+                }
             } else {
                 player.sendMessage("§c引数が無効です");
                 return true;
